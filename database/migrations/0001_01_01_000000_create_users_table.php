@@ -15,12 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('username')->unique(); // Nombre de usuario para el login
             $table->string('password');
+            // Roles: administrador, operador, consulta
+            $table->enum('rol', ['administrador', 'operador', 'consulta'])->default('consulta');
+            // Estado: activo o inactivo
+            $table->enum('estado', ['activo', 'inactivo'])->default('activo');
             $table->rememberToken();
             $table->timestamps();
         });
 
+        // Tablas por defecto de Laravel para sesiones (necesarias para el login)
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');

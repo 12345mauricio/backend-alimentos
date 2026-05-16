@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 // Importamos los controladores (Crucial para que las rutas sepan a dónde ir)
 use App\Http\Controllers\AlimentoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductoController;
 
 // 1. RUTAS DE AUTENTICACIÓN (PÚBLICAS)
 // Si entran a la raíz '/', ahora los mandamos a ver el formulario de Login
@@ -21,5 +22,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/registro-lote', function () {
         return view('registro-lote');
     });
+
+    // Cambiamos tus rutas manuales por un Resource estándar
+    // Esto crea automáticamente 'productos.index', 'productos.store', 'productos.update', etc.
+    Route::resource('productos', ProductoController::class);
 
 });

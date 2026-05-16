@@ -6,23 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre'); // Nombre del producto (ej. Leche Entera)
-            $table->string('categoria'); // Categoría (ej. Lácteos)
-            $table->text('descripcion')->nullable(); // Descripción opcional
-            $table->timestamps(); // Crea created_at y updated_at
+            $table->string('nombre')->unique(); // Evita duplicados a nivel BD
+            $table->string('categoria');
+            $table->string('unidad_medida'); // Unidades, Litros, Kg, etc.
+            $table->text('descripcion')->nullable();
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('productos');

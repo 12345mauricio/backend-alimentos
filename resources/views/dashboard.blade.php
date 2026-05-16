@@ -21,7 +21,7 @@
                 <a href="{{ url('/dashboard') }}"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
             </li>
             <li class="sidebar-item">
-                <a href="#"><i class="bi bi-box-seam"></i> Gestión Productos</a>
+                <a href="{{ route('productos.index') }}"><i class="bi bi-box-seam"></i> Gestión Productos</a>
             </li>
             <li class="sidebar-item">
                 <a href="#"><i class="bi bi-tags"></i> Gestión de Lotes</a>
